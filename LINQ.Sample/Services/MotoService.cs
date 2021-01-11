@@ -6,6 +6,7 @@ namespace LINQ.Sample.Services
 {
     class MotoService : IMotoService
     {
+        /*
         public List<Motorcycle> Where(IEnumerable<Motorcycle> motorcycles, MotorcycleDelegate motorcycleDelegate)
         {
             var result = new List<Motorcycle>();
@@ -17,8 +18,9 @@ namespace LINQ.Sample.Services
 
             return result;
         }
+        */
 
-        public List<Motorcycle> Where<T, TResult>(IEnumerable<Motorcycle> motorcycles, Func<T, TResult> motorcycleDelegate)
+        public List<Motorcycle> Where(IEnumerable<Motorcycle> motorcycles, Func<int, bool> motorcycleDelegate)
         {
             var result = new List<Motorcycle>();
             if (motorcycleDelegate == null) return result;
