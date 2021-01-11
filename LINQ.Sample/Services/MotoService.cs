@@ -8,7 +8,26 @@ namespace LINQ.Sample.Services
     {
         public List<Motorcycle> Where(IEnumerable<Motorcycle> motorcycles, MotorcycleDelegate motorcycleDelegate)
         {
-            throw new NotImplementedException();
+            var result = new List<Motorcycle>();
+            if (motorcycleDelegate == null) return result;
+
+            foreach (var moto in motorcycles)
+                if (motorcycleDelegate(moto.Odometer))
+                    result.Add(moto);
+
+            return result;
+        }
+
+        public List<Motorcycle> Where<T, TResult>(IEnumerable<Motorcycle> motorcycles, Func<T, TResult> motorcycleDelegate)
+        {
+            var result = new List<Motorcycle>();
+            if (motorcycleDelegate == null) return result;
+
+            foreach (var moto in motorcycles)
+                if (motorcycleDelegate(moto.Odometer))
+                    result.Add(moto);
+
+            return result;
         }
     }
 }

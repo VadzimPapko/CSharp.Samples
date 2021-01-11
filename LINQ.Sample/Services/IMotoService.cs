@@ -6,6 +6,7 @@ namespace LINQ.Sample.Services
 {
     interface IMotoService
     {
-        List<Motorcycle> Where(IEnumerable<Motorcycle> motorcycles, MotorcycleDelegate motorcycleDelegate);
+        List<Motorcycle> Where<T, TResult>( IEnumerable<Motorcycle> motorcycles, 
+                                                                     Func<T, TResult> motorcycleDelegate);
     }
 }
